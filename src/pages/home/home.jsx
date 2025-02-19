@@ -10,11 +10,11 @@ import jbl from "../../assets/images/JBL.png";
 import ps5 from "../../assets/images/PS5.png";
 import Last from "../../components/lasthome/lasthome";
 import kamaz from "../../assets/images/kamaz.png";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
     <div className="max-w-7xl mx-auto p-4">
-      {/* Категории и баннер */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
         <div className="md:col-span-2 bg-white p-4 shadow-md rounded-lg hidden md:block">
           <ul className="space-y-3 text-gray-700">
@@ -37,7 +37,6 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Flash Sales */}
       <section className="mt-10">
         <div className="flex flex-col sm:flex-row justify-between items-center text-center sm:text-left">
           <h1 className="text-xl sm:text-2xl font-bold">Flash Sales</h1>
@@ -52,10 +51,11 @@ const Home = () => {
       </section>
 
       <div className="flex justify-center mt-6">
-        <But name="View All Products" />
+        <Link to="/products">
+          <But name="View All Products" />
+        </Link>
       </div>
 
-      {/* Browse By Category */}
       <h1 className="text-xl sm:text-2xl font-bold mt-10">Browse By Category</h1>
       <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6 mt-6">
         <Brow name="Phones" img={iconIphone} />
@@ -66,10 +66,11 @@ const Home = () => {
         <Brow name="Gaming" img={iconIphone} />
       </div>
 
-      {/* Best Selling Products */}
       <h1 className="text-xl sm:text-2xl font-bold mt-16 mb-6">Best Selling Products</h1>
       <div className="flex justify-center">
-        <But name="View All" />
+        <Link to="/products">
+          <But name="View All" />
+        </Link>
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 mt-6">
         <Bestcard name="The north coat" img={iphone} price="78.99" />
@@ -78,12 +79,10 @@ const Home = () => {
         <Bestcard name="Small BookSelf" img={iphone} price="78.99" />
       </div>
 
-      {/* JBL Banner */}
       <div className="w-full md:w-[80%] mx-auto mt-10">
         <img src={jbl} alt="" className="w-full rounded-lg" />
       </div>
 
-      {/* Explore Our Products */}
       <h1 className="text-xl sm:text-2xl font-bold mt-16 mb-6">Explore Our Products</h1>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 mt-6">
         <Flashcard name="HAVIT HV-G92 Gamepad" img={jostyk} />
@@ -91,17 +90,23 @@ const Home = () => {
         <Flashcard name="IPS LCD Gaming Monitor" img={jostyk} />
         <Flashcard name="S-Series Comfort Chair " img={jostyk} />
       </div>
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 mt-6">
+        <Flashcard name="HAVIT HV-G92 Gamepad" img={jostyk} />
+        <Flashcard name="AK-900 Wired Keyboard" img={jostyk} />
+        <Flashcard name="IPS LCD Gaming Monitor" img={jostyk} />
+        <Flashcard name="S-Series Comfort Chair " img={jostyk} />
+      </div>
       <div className="flex justify-center mt-6">
-        <But name="View All Products" />
+        <Link to="/products">
+          <But name="View All Products" />
+        </Link>
       </div>
 
-      {/* New Arrival */}
       <h1 className="text-xl sm:text-2xl font-bold mt-16 mb-6">New Arrival</h1>
       <div className="w-full md:w-[80%] mx-auto">
         <img src={ps5} alt="" className="w-full rounded-lg" />
       </div>
 
-      {/* Delivery Info */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center mt-16">
         <Last img={kamaz} name="FREE AND FAST DELIVERY" desc="Free delivery for all orders over $140" />
         <Last img={kamaz} name="24/7 CUSTOMER SERVICE" desc="Friendly 24/7 customer support" />
