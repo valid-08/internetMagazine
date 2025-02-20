@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import logo from "../assets/images/logo.png";
 import social from "../assets/images/social.png";
@@ -6,9 +6,19 @@ import imgDil from "../assets/images/Wishlist.png";
 import corzinka from "../assets/images/corzinka.png";
 
 const Layout = () => {
+    const [menuOpen, setMenuOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen);
+    };
+
+    const closeMenu = () => {
+        setMenuOpen(false);
+    };
+
     return (
         <>
-            <header className="w-full bg-white shadow-md fixed mb-[100px] z-2">
+            <header className="w-full bg-white shadow-md fixed mb-[100px] z-10">
                 <nav className="flex flex-wrap items-center justify-between max-w-6xl mx-auto p-4">
                     <Link to="/login">
                         <img src={logo} alt="Logo" className="w-[120px]" />
@@ -29,6 +39,32 @@ const Layout = () => {
                         </Link>
                     </div>
 
+                    <button
+                        onClick={toggleMenu}
+                        className="md:hidden flex flex-col items-center space-y-1"
+                    >
+                        <div className="w-6 h-1 bg-black"></div>
+                        <div className="w-6 h-1 bg-black"></div>
+                        <div className="w-6 h-1 bg-black"></div>
+                    </button>
+
+                    {menuOpen && (
+                        <div className="md:hidden absolute top-0 left-0 w-full bg-white shadow-md p-4 z-50">
+                            <button
+                                onClick={closeMenu}
+                                className="absolute top-2 right-2 text-xl font-bold"
+                            >
+                                &times;
+                            </button>
+                            <div className="space-y-4">
+                                <Link to="/" className="block text-lg" onClick={closeMenu}>Home</Link>
+                                <Link to="/contact" className="block text-lg" onClick={closeMenu}>Contact</Link>
+                                <Link to="/about" className="block text-lg" onClick={closeMenu}>About</Link>
+                                <Link to="/signUp" className="block text-lg" onClick={closeMenu}>Sign Up</Link>
+                            </div>
+                        </div>
+                    )}
+
                     <div className="flex items-center space-x-4">
                         <input
                             type="text"
@@ -36,7 +72,7 @@ const Layout = () => {
                             className="hidden sm:block p-2 border rounded-lg text-sm"
                         />
                         <Link to="/wishlist">
-                        <img src={imgDil} className="w-8 h-8 cursor-pointer" alt="Wishlist" />
+                            <img src={imgDil} className="w-8 h-8 cursor-pointer" alt="Wishlist" />
                         </Link>
                         <Link to="/cart">
                             <img src={corzinka} className="w-8 h-8 cursor-pointer" alt="Cart" />

@@ -15,10 +15,50 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+import axios from "axios";
 
 
 
 const Home = () => {
+
+
+
+
+  const [data, setData] = useState([])
+  const get = async () => {
+    try {
+      const { data } = await axios.get("https://store-api.softclub.tj/Product/get-products")
+      setData(data.data)
+    } catch (error) {
+      console.error(error);
+
+    }
+  }
+
+
+
+  const addToCart = async (id) => {
+    try {
+      const data = await axios.post(`https://store-api.softclub.tj/Cart/add-product-to-cart?id=${id}`, {}, {
+        headers: {
+          "authorization": `Bearer ${localStorage.getItem('access_token')}`,
+        }
+      })
+      console.log(data);
+
+    } catch (error) {
+      console.error(error);
+
+    }
+  }
+
+  useEffect(() => {
+    get()
+  }, [])
+
+
+
+
 
   const [timeLeft, setTimeLeft] = useState({
     hours: 23,
@@ -94,10 +134,19 @@ const Home = () => {
           </p>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 mt-6">
-          <Flashcard price="99.99" name="HAVIT HV-G92 Gamepad" img={jostyk} />
+          {/* <Flashcard price="99.99" name="HAVIT HV-G92 Gamepad" img={jostyk} />
           <Flashcard price="99.99" name="AK-900 Wired Keyboard" img={jostyk} />
           <Flashcard price="99.99" name="IPS LCD Gaming Monitor" img={jostyk} />
-          <Flashcard price="99.99" name="S-Series Comfort Chair" img={jostyk} />
+          <Flashcard price="99.99" name="S-Series Comfort Chair" img={jostyk} /> */}
+          {data?.products?.length > 0 && data.products.map((el) => {
+            return <Flashcard key={el.id}>
+              <h2>{el.productName}</h2>
+              <p>{el.categoryName}</p>
+              <p>{el.price}</p>
+              <button onClick={() => addToCart(el.id)}>Add to Cart</button>
+            </Flashcard>
+          })}
+
         </div>
       </section>
 
@@ -136,16 +185,32 @@ const Home = () => {
 
       <h1 className="text-xl sm:text-2xl font-bold mt-16 mb-6">Explore Our Products</h1>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 mt-6">
-        <Flashcard price="99.99" name="HAVIT HV-G92 Gamepad" img={jostyk} />
+        {/* <Flashcard price="99.99" name="HAVIT HV-G92 Gamepad" img={jostyk} />
         <Flashcard price="99.99" name="AK-900 Wired Keyboard" img={jostyk} />
         <Flashcard price="99.99" name="IPS LCD Gaming Monitor" img={jostyk} />
-        <Flashcard price="99.99" name="S-Series Comfort Chair " img={jostyk} />
+        <Flashcard price="99.99" name="S-Series Comfort Chair " img={jostyk} /> */}
+        {data?.products?.length > 0 && data.products.map((el) => {
+          return <Flashcard key={el.id}>
+            <h2>{el.productName}</h2>
+            <p>{el.categoryName}</p>
+            <p>{el.price}</p>
+            <button onClick={() => addToCart(el.id)}>Add to Cart</button>
+          </Flashcard>
+        })}
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 mt-6">
-        <Flashcard price="99.99" name="HAVIT HV-G92 Gamepad" img={jostyk} />
+        {/* <Flashcard price="99.99" name="HAVIT HV-G92 Gamepad" img={jostyk} />
         <Flashcard price="99.99" name="AK-900 Wired Keyboard" img={jostyk} />
         <Flashcard price="99.99" name="IPS LCD Gaming Monitor" img={jostyk} />
-        <Flashcard price="99.99" name="S-Series Comfort Chair " img={jostyk} />
+        <Flashcard price="99.99" name="S-Series Comfort Chair " img={jostyk} /> */}
+        {data?.products?.length > 0 && data.products.map((el) => {
+          return <Flashcard key={el.id}>
+            <h2>{el.productName}</h2>
+            <p>{el.categoryName}</p>
+            <p>{el.price}</p>
+            <button onClick={() => addToCart(el.id)}>Add to Cart</button>
+          </Flashcard>
+        })}
       </div>
       <div className="flex justify-center mt-6">
         <Link to="/products">
