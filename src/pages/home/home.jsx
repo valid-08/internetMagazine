@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import iphone from "../../assets/images/iphone.png";
 import Flashcard from "../../components/flashcard/flashcard";
-import jostyk from "../../assets/images/jostyk.png";
+import jostyk from "../../assets/images/jost.png";
 import But from "../../components/button/button";
 import Brow from "../../components/browsecard/browsecard";
 import iconIphone from "../../assets/images/iconIphone.png";
@@ -11,10 +11,47 @@ import ps5 from "../../assets/images/PS5.png";
 import Last from "../../components/lasthome/lasthome";
 import kamaz from "../../assets/images/kamaz.png";
 import { Link } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+
+
 
 const Home = () => {
+
+  const [timeLeft, setTimeLeft] = useState({
+    hours: 23,
+    minutes: 23,
+    seconds: 19,
+  });
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft((prev) => {
+        let { hours, minutes, seconds } = prev;
+
+        if (seconds > 0) {
+          seconds--;
+        } else if (minutes > 0) {
+          minutes--;
+          seconds = 59;
+        } else if (hours > 0) {
+          hours--;
+          minutes = 59;
+          seconds = 59;
+        } else {
+          clearInterval(timer);
+        }
+
+        return { hours, minutes, seconds };
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
   return (
-    <div className="max-w-7xl mx-auto p-4">
+    <div className="max-w-7xl mx-auto p-4 mt-[100px]">
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
         <div className="md:col-span-2 bg-white p-4 shadow-md rounded-lg hidden md:block">
           <ul className="space-y-3 text-gray-700">
@@ -32,7 +69,17 @@ const Home = () => {
 
         <div className="md:col-span-10">
           <div className="relative">
-            <img src={iphone} alt="" className="rounded-lg w-full" />
+            <Swiper navigation={true} modules={[Navigation]}>
+              <SwiperSlide>
+                <img src={iphone} alt="" className="rounded-lg w-full" />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img src={iphone} alt="" className="rounded-lg w-full" />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img src={iphone} alt="" className="rounded-lg w-full" />
+              </SwiperSlide>
+            </Swiper>
           </div>
         </div>
       </div>
@@ -40,13 +87,17 @@ const Home = () => {
       <section className="mt-10">
         <div className="flex flex-col sm:flex-row justify-between items-center text-center sm:text-left">
           <h1 className="text-xl sm:text-2xl font-bold">Flash Sales</h1>
-          <p className="text-red-500 text-lg">03 : 23 : 19 : 56</p>
+          <p className="text-red-500 text-lg font-semibold">
+            {String(timeLeft.hours).padStart(2, "0")} :{" "}
+            {String(timeLeft.minutes).padStart(2, "0")} :{" "}
+            {String(timeLeft.seconds).padStart(2, "0")}
+          </p>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 mt-6">
-          <Flashcard name="HAVIT HV-G92 Gamepad" img={jostyk} />
-          <Flashcard name="AK-900 Wired Keyboard" img={jostyk} />
-          <Flashcard name="IPS LCD Gaming Monitor" img={jostyk} />
-          <Flashcard name="S-Series Comfort Chair " img={jostyk} />
+          <Flashcard price="99.99" name="HAVIT HV-G92 Gamepad" img={jostyk} />
+          <Flashcard price="99.99" name="AK-900 Wired Keyboard" img={jostyk} />
+          <Flashcard price="99.99" name="IPS LCD Gaming Monitor" img={jostyk} />
+          <Flashcard price="99.99" name="S-Series Comfort Chair" img={jostyk} />
         </div>
       </section>
 
@@ -85,16 +136,16 @@ const Home = () => {
 
       <h1 className="text-xl sm:text-2xl font-bold mt-16 mb-6">Explore Our Products</h1>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 mt-6">
-        <Flashcard name="HAVIT HV-G92 Gamepad" img={jostyk} />
-        <Flashcard name="AK-900 Wired Keyboard" img={jostyk} />
-        <Flashcard name="IPS LCD Gaming Monitor" img={jostyk} />
-        <Flashcard name="S-Series Comfort Chair " img={jostyk} />
+        <Flashcard price="99.99" name="HAVIT HV-G92 Gamepad" img={jostyk} />
+        <Flashcard price="99.99" name="AK-900 Wired Keyboard" img={jostyk} />
+        <Flashcard price="99.99" name="IPS LCD Gaming Monitor" img={jostyk} />
+        <Flashcard price="99.99" name="S-Series Comfort Chair " img={jostyk} />
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 mt-6">
-        <Flashcard name="HAVIT HV-G92 Gamepad" img={jostyk} />
-        <Flashcard name="AK-900 Wired Keyboard" img={jostyk} />
-        <Flashcard name="IPS LCD Gaming Monitor" img={jostyk} />
-        <Flashcard name="S-Series Comfort Chair " img={jostyk} />
+        <Flashcard price="99.99" name="HAVIT HV-G92 Gamepad" img={jostyk} />
+        <Flashcard price="99.99" name="AK-900 Wired Keyboard" img={jostyk} />
+        <Flashcard price="99.99" name="IPS LCD Gaming Monitor" img={jostyk} />
+        <Flashcard price="99.99" name="S-Series Comfort Chair " img={jostyk} />
       </div>
       <div className="flex justify-center mt-6">
         <Link to="/products">

@@ -8,7 +8,7 @@ import corzinka from "../assets/images/corzinka.png";
 const Layout = () => {
     return (
         <>
-            <header className="w-full bg-white shadow-md">
+            <header className="w-full bg-white shadow-md fixed mb-[100px] z-2">
                 <nav className="flex flex-wrap items-center justify-between max-w-6xl mx-auto p-4">
                     <Link to="/login">
                         <img src={logo} alt="Logo" className="w-[120px]" />
@@ -35,8 +35,12 @@ const Layout = () => {
                             placeholder="What are you looking for?"
                             className="hidden sm:block p-2 border rounded-lg text-sm"
                         />
+                        <Link to="/wishlist">
                         <img src={imgDil} className="w-8 h-8 cursor-pointer" alt="Wishlist" />
-                        <img src={corzinka} className="w-8 h-8 cursor-pointer" alt="Cart" />
+                        </Link>
+                        <Link to="/cart">
+                            <img src={corzinka} className="w-8 h-8 cursor-pointer" alt="Cart" />
+                        </Link>
                     </div>
                 </nav>
             </header>

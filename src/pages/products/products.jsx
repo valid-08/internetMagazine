@@ -1,10 +1,10 @@
 import React from 'react';
 import Flashcard from '../../components/flashcard/flashcard';
-import jostyk from "../../assets/images/jostyk.png";
+import jostyk from "../../assets/images/jost.png";
 
 const Products = () => {
     return (
-        <div className='max-w-7xl mx-auto p-4 grid grid-cols-12 gap-6'>
+        <div className='max-w-7xl mx-auto p-4 grid grid-cols-12 gap-6 mt-[100px]'>
             <div className='col-span-12 md:col-span-3 bg-white p-4 shadow-md rounded-lg'>
                 <select className='w-full p-2 border rounded-md mb-4'>
                     <option value="">Popularity</option>
@@ -47,16 +47,16 @@ const Products = () => {
 
             <div className='col-span-12 md:col-span-9'>
                 <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-6">
-                    <Flashcard name="HAVIT HV-G92 Gamepad" img={jostyk} />
-                    <Flashcard name="AK-900 Wired Keyboard" img={jostyk} />
-                    <Flashcard name="IPS LCD Gaming Monitor" img={jostyk} />
-                    <Flashcard name="S-Series Comfort Chair " img={jostyk} />
-                    <Flashcard name="S-Series Comfort Chair " img={jostyk} />
-                    <Flashcard name="S-Series Comfort Chair " img={jostyk} />
-                    <Flashcard name="S-Series Comfort Chair " img={jostyk} />
-                    <Flashcard name="S-Series Comfort Chair " img={jostyk} />
-                    <Flashcard name="S-Series Comfort Chair " img={jostyk} />
-                    <Flashcard name="S-Series Comfort Chair " img={jostyk} />
+                    <Flashcard price="99.99" name="HAVIT HV-G92 Gamepad" img={jostyk} />
+                    <Flashcard price="99.99" name="AK-900 Wired Keyboard" img={jostyk} />
+                    <Flashcard price="99.99" name="IPS LCD Gaming Monitor" img={jostyk} />
+                    <Flashcard price="99.99" name="S-Series Comfort Chair " img={jostyk} />
+                    <Flashcard price="99.99" name="S-Series Comfort Chair " img={jostyk} />
+                    <Flashcard price="99.99" name="S-Series Comfort Chair " img={jostyk} />
+                    <Flashcard price="99.99" name="S-Series Comfort Chair " img={jostyk} />
+                    <Flashcard price="99.99" name="S-Series Comfort Chair " img={jostyk} />
+                    <Flashcard price="99.99" name="S-Series Comfort Chair " img={jostyk} />
+                    <Flashcard price="99.99" name="S-Series Comfort Chair " img={jostyk} />
                 </div>
             </div>
         </div>

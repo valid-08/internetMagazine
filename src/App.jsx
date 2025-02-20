@@ -7,6 +7,9 @@ import Contact from './pages/contact/contact'
 import Login from './pages/login/login'
 import SignUp from './pages/signUp/signUp'
 import Products from './pages/products/products'
+import Korzinka from './pages/korzinka/korzinka'
+import Wishlist from "./pages/wishlist/wishlist";
+import Info from "./pages/info/info";
 
 function App() {
   const router = createBrowserRouter([
@@ -41,6 +44,18 @@ function App() {
         {
           path: '/products',
           element: <Products/>
+        },
+        {
+          path: '/cart',
+          element: <Korzinka/>
+        },
+        {
+          path: '/wishlist',
+          element: <Wishlist/>
+        },
+        {
+          path: '/info',
+          element: <Info/>
         }
       ]
     }
