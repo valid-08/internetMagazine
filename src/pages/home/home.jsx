@@ -20,10 +20,6 @@ import axios from "axios";
 
 
 const Home = () => {
-
-
-
-
   const [data, setData] = useState([])
   const get = async () => {
     try {
@@ -31,7 +27,6 @@ const Home = () => {
       setData(data.data)
     } catch (error) {
       console.error(error);
-
     }
   }
 
